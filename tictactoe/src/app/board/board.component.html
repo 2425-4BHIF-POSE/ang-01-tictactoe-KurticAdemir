@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="board">
+    @for (square of board(); track $index) {
+      <app-square [value]="square" (onClicked)="makeMove($index)"/>
+    }
+    <mat-card>
+      <mat-card-content>
+        @if (!isWinner) {
+          <p>
+            Turn of Player: {{ curr }}
+          </p>
+        } @else {
+          <p>
+            Winner Player {{ curr }}!
+          </p>
+
+          <mat-button-toggle>
+            <button (click)="restart()">
+              Restart
+            </button>
+          </mat-button-toggle>
+        }
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
